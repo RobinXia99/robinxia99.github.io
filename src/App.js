@@ -5,6 +5,7 @@ import NavigationBar from './components/navbar';
 import { useState } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router';
 import AboutMe from './components/aboutme';
+import Projects from './components/projects';
 
 function App() {
 
@@ -36,6 +37,9 @@ function App() {
       <Routes>
         <Route exact path='/' element={
           <AboutMe/>
+        } />
+        <Route exact path='/projects' element={
+          <Projects/>
         } />
       </Routes>
     </div>

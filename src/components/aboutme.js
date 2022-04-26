@@ -15,7 +15,7 @@ const AboutMe = () => {
                         <h4>App & Web development student</h4>
                     </div>
 
-                    <p className='info_body'>
+                    <div className='info_body'>
                         <h4>
                             What I enjoy the most is the creative freedom that
                             frontend development brings. 
@@ -24,7 +24,7 @@ const AboutMe = () => {
                             It lets you turn all your visions into reality and it
                             brings you a mix of satisfaction and hunger for more.
                         </h4>
-                    </p>
+                    </div>
 
                 </div>
                 

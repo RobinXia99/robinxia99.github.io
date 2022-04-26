@@ -1,6 +1,6 @@
 .logo {
-    width: 500px;
-    height: 500px;
+    width: 550px;
+    height: 550px;
     animation: slideInFromRight 1.5s, fadeIn 1s;
 }
 
@@ -8,12 +8,13 @@
 
 .main_container {
     width: 80vw;
-    margin-top: 20vh;
+    margin-top: 15vh;
     margin-left: auto;
     margin-right: auto;
     display: flex;
     justify-content: space-between;
     color: white;
+    align-items: center;
 }
 
 .name_container {
@@ -40,6 +41,7 @@
 .name_container h1 {
     font-size: 3rem;
     margin-bottom: 0;
+    font-weight: 200;
 }
 
 .name_container h4 {
@@ -99,4 +101,40 @@
   @keyframes fadeIn {
     0% {opacity:0;}
     100% {opacity:1;}
+  }
+
+  @media screen and (max-width: 1000px) {
+    .main_container {
+        width: 100vw;
+        justify-content: flex-start;
+        flex-direction: column;
+        align-items: center;
+    }
+    .about_me_container {
+        width: 85vw;
+    }
+    .logo {
+        width: 100vw;
+        height: auto;
+    }
+  }
+
+  @media screen and (max-width: 700px) {
+
+      .info_body h4 {
+          font-size: 1rem !important;
+      }
+
+      .name_container h1 {
+          font-size: 2rem;
+      }
+
+      .name_container h4 {
+          font-size: 1rem;
+      }
+
+      .name_container {
+          --b: 15px;
+          --w: 100px;
+      }
   }

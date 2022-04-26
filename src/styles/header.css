@@ -23,7 +23,14 @@
 
 .navbar_breadcrumb {
     font-size: 1.2rem;
+    color: white;
     cursor: auto;
+    animation: fadeIn 2s;
+}
+
+.active {
+    color: gray;
+    cursor: default;
 }
 
 ul {
@@ -72,3 +79,9 @@ li:nth-child(3) span:hover {
     color: white !important;
 }
 
+@media screen and (max-width: 700px) {
+    .navbar {
+        width: 100%;
+        margin: 0 5px;
+    }
+}
