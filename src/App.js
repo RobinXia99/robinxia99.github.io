@@ -1,23 +1,43 @@
-import logo from './logo.svg';
+
 import './App.css';
 
+import NavigationBar from './components/navbar';
+import { useState } from 'react';
+import { HashRouter as Router, Routes, Route } from 'react-router';
+import AboutMe from './components/aboutme';
+
 function App() {
+
+  let mediaQuery = window.matchMedia('(max-width: 700px)');
+
+  const [device, setDevice] = useState(() => {
+
+    if(mediaQuery.matches) {
+      return 'mobile'
+  } else {
+      return 'web'
+  }
+
+  });
+
+  mediaQuery.addEventListener('change', () => {
+
+    if(mediaQuery.matches) {
+      setDevice('mobile');
+  } else {
+      setDevice('web');
+  }
+  });
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavigationBar device={device}/>
+      <Routes>
+        <Route exact path='/' element={
+          <AboutMe/>
+        } />
+      </Routes>
     </div>
   );
 }

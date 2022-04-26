@@ -1,0 +1,74 @@
+
+
+.header_container {
+    width: 100%;
+    height: 8rem;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    top: 0;
+    z-index: 10;
+    background-image: linear-gradient(#1414146d, #1414142b, #14141410);
+}
+
+.navbar {
+    width: 100%;
+    height: 10vh;
+    margin: 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #141414;
+}
+
+.navbar_breadcrumb {
+    font-size: 1.2rem;
+    cursor: auto;
+}
+
+ul {
+    height: 50%;
+    display: inherit;
+    align-items: center;
+}
+
+li {
+    color: white;
+    font-weight: bolder;
+    height: 100%;
+    padding-left: 20px;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    display: inherit;
+    justify-content: center;
+    align-items: center;
+}
+
+li span {
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+li:first-child span:hover {
+    color: #997AB6;
+}
+
+li:nth-child(2) span:hover {
+    color: #8C9AC6;
+}
+
+li:nth-child(3) span:hover {
+    color: #C4CCE5;
+}
+
+
+.fa_icon {
+    font-size: 1.5rem;
+    color: #997AB6;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.fa_icon:hover {
+    color: white !important;
+}
+

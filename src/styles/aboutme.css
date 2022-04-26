@@ -1,0 +1,102 @@
+.logo {
+    width: 500px;
+    height: 500px;
+    animation: slideInFromRight 1.5s, fadeIn 1s;
+}
+
+
+
+.main_container {
+    width: 80vw;
+    margin-top: 20vh;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+}
+
+.name_container {
+    text-align: center;
+
+
+    --b:20px;   /* thickness of the border */
+    --c:white;   /* color of the border */
+    --w:120px;  /* width of border */
+    
+  
+    border:var(--b) solid transparent; /* space for the border */
+    --g:#0000 90deg,var(--c) 0;
+    background:
+      conic-gradient(from 180deg at top    var(--b) right var(--b),var(--g)) 100% 0,
+      conic-gradient(from 0deg   at bottom var(--b) left  var(--b),var(--g)) 0    100%;
+    background-size:var(--w) var(--w);
+    background-origin:border-box;
+    background-repeat:no-repeat;
+
+    
+}
+
+.name_container h1 {
+    font-size: 3rem;
+    margin-bottom: 0;
+}
+
+.name_container h4 {
+    font-size: 1.2rem;
+    font-weight: 200;
+    margin-top: 0;
+}
+
+.about_me_container {
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: fit-content;
+    animation: fadeIn 2s;
+
+}
+.about_me_container aside {
+    color: #A383C0;
+    font-weight: bolder;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    display: flex;
+    font-size: 1.2rem;
+}
+
+
+.about_me_container aside:nth-child(3) {
+    justify-content: flex-end;
+}
+
+
+.info_body h4:first-child {
+    font-size: 1.2rem;
+    font-weight: 200;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+.info_body h4:nth-child(2) {
+    font-size: 1.2rem;
+    font-weight: 200;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    color: #8C9AC6;
+}
+
+/* ------------------------- */
+
+@keyframes slideInFromRight {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
