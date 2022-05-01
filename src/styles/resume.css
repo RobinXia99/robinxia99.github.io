@@ -74,4 +74,8 @@
         flex-direction: column;
         gap: 50px;
     }
+
+    .columns div ul {
+        margin: 2px 0;
+    }
 }
