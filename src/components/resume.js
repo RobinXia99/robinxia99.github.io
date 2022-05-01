@@ -1,6 +1,8 @@
 import '../styles/resume.css';
 
 import cv from '../files/robinxiacv.pdf';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 
 const Resume = () => {
 
@@ -10,7 +12,9 @@ const Resume = () => {
 
             <div className='title_holder'>
                 <h2>Resume</h2>
-                <div className='resume_dl'>Download my <a href={cv} target='_blank'>CV</a></div>
+                <div className='resume_dl'>
+                    Download my <a href={cv} target='_blank'>CV</a>
+                </div>
             </div>
             
             <div className='columns skills'>
