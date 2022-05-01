@@ -8,7 +8,7 @@
     justify-content: center;
     top: 0;
     z-index: 10;
-    background-image: linear-gradient(#1414146d, #1414142b, #14141410);
+    background-image: linear-gradient(#141414, #141414db, #141414ba, #141414a5, #14141450,#14141400);
 }
 
 .navbar {
@@ -18,7 +18,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #141414;
+    /* background-color: #141414; */
 }
 
 .navbar_breadcrumb {
@@ -26,20 +26,24 @@
     color: white;
     cursor: auto;
     animation: fadeIn 2s;
+    z-index: 13;
+    padding-left: 20px;
+    font-weight: bolder;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
 }
 
 .active {
-    color: gray;
+    color: gray !important;
     cursor: default;
 }
 
-ul {
+.web_ul {
     height: 50%;
     display: inherit;
     align-items: center;
 }
 
-li {
+.web_ul li {
     color: white;
     font-weight: bolder;
     height: 100%;
@@ -50,7 +54,7 @@ li {
     align-items: center;
 }
 
-li span {
+.web_ul li span {
     transition: 0.2s;
     cursor: pointer;
 }
@@ -71,13 +75,81 @@ li:nth-child(3) span:hover {
 .fa_icon {
     font-size: 1.5rem;
     color: #997AB6;
-    transition: 0.2s;
     cursor: pointer;
+    transition: 0.2s;
+}
+
+.fa_icon_menu {
+    font-size: 2.5rem;
+    color: #997AB6;
 }
 
 .fa_icon:hover {
     color: white !important;
 }
+
+.dropdown_icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 2rem;
+    color: white;
+    font-size: 1.5rem;
+
+    cursor: pointer;
+}
+
+
+.dropdown_holder {
+    position: fixed;
+    height: 60%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    animation: fadeIn 0.5s;
+    border-bottom-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    z-index: 8;
+    
+}
+
+.dropdown_ul {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown_ul div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+}
+
+.dropdown_ul li {
+    width: fit-content;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.dropdown_ul li span {
+    color: white;
+    font-weight: bolder;
+    font-size: 1.8rem;
+}
+
+
+
+
 
 @media screen and (max-width: 700px) {
     .navbar {

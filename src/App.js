@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router';
 import AboutMe from './components/aboutme';
 import Projects from './components/projects';
+import Resume from './components/resume';
 
 function App() {
 
@@ -40,6 +41,10 @@ function App() {
         } />
         <Route exact path='/projects' element={
           <Projects/>
+        } />
+
+        <Route exact path='/resume' element={
+          <Resume/>
         } />
       </Routes>
     </div>

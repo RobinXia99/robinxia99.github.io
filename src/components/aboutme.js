@@ -5,9 +5,9 @@ const AboutMe = () => {
 
 
     return (
-        <div className="main_container">
+        <div className="main_container about_me">
             <div className="about_me_container">
-                <aside><span>&lt;aboutme&gt;</span></aside>
+                <aside className='path_tag left'><span>&lt;aboutme&gt;</span></aside>
 
                 <div>
                     <div className='name_container'>
@@ -30,7 +30,7 @@ const AboutMe = () => {
                 
                 
 
-                <aside><span>&lt;/aboutme&gt;</span></aside>
+                <aside className='path_tag right'><span>&lt;/aboutme&gt;</span></aside>
             </div>
             <img src={rx} className='logo'></img>
         </div>

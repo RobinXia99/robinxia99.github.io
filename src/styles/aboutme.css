@@ -1,21 +1,12 @@
 .logo {
     width: 550px;
     height: 550px;
-    animation: slideInFromRight 1.5s, fadeIn 1s;
+    animation: fadeIn 1s;
 }
 
-
-
-.main_container {
-    width: 80vw;
-    margin-top: 15vh;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
+.main_container.about_me {
     justify-content: space-between;
-    color: white;
-    align-items: center;
-}
+  }
 
 .name_container {
     text-align: center;
@@ -59,19 +50,6 @@
     animation: fadeIn 2s;
 
 }
-.about_me_container aside {
-    color: #A383C0;
-    font-weight: bolder;
-    text-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    display: flex;
-    font-size: 1.2rem;
-}
-
-
-.about_me_container aside:nth-child(3) {
-    justify-content: flex-end;
-}
 
 
 .info_body h4:first-child {
@@ -104,12 +82,7 @@
   }
 
   @media screen and (max-width: 1000px) {
-    .main_container {
-        width: 100vw;
-        justify-content: flex-start;
-        flex-direction: column;
-        align-items: center;
-    }
+
     .about_me_container {
         width: 85vw;
     }
@@ -120,6 +93,7 @@
   }
 
   @media screen and (max-width: 700px) {
+
 
       .info_body h4 {
           font-size: 1rem !important;
