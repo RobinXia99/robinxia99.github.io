@@ -1,26 +1,47 @@
 import '../styles/projects.css';
+import { projectsJson } from '../files/globals';
 
 const Projects = () => {
 
     return (
         <div className="main_container projects">
             <aside className='path_tag left'><span>&lt;projects&gt;</span></aside>
-            <div className='title_holder'>
+            <div className='title_holder projects'>
                 <h2>Projects</h2>
-                <span>// No professional works yet! In the meantime, check out my <span style={{color: '#997AB6'}}>Artstation</span> and <span style={{color: '#8C9AC6'}}>Github</span>! (Pinned Repositories have images/demo in README)</span>
+                <span>// No professional works yet! In the meantime, here are some school/side projects! Currently working on React projects.</span>
             </div>
-            <div className='projects_container'>
-                <a href='https://www.artstation.com/voyance' target='_blank'>
-                    <img src='https://www.artstation.com/assets/about/logo/logo-artstation-vertical-a8aa107f79c46c9b16dcc7c5fe746084.png'></img>
-                </a>
-                <a href='https://github.com/RobinXia99' target='_blank'>
-                    <img src='https://www.logo.wine/a/logo/GitHub/GitHub-Wordmark-White-Dark-Background-Logo.wine.svg'></img>
-                </a>
-            </div>
+            {projectsJson.map(project => (
+                <ProjectInfo project={project} key={project.title}></ProjectInfo>
+            ))}
+
             <aside className='path_tag right'><span>&lt;/projects&gt;</span></aside>
         </div>
     )
 
 }
+
+const ProjectInfo = ({project}) => {
+
+    
+
+    return (
+        <div className='projects_container'>
+            <div className='projects_desc'>
+                <h2>{project.title}</h2>
+                <p>{project.desc}</p>
+                <h4>Made using: {project.tools}</h4>
+            </div>
+            <div className='project_images'>
+                {project.images.map(image => (
+                <img key={image} className='project_img' src={image}></img>
+                ))}
+            </div>
+
+        </div>
+    )
+}
+
+
+
 
 export default Projects;

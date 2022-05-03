@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import '../styles/header.css'
-import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faLinkedin, faGithub, faArtstation } from "@fortawesome/free-brands-svg-icons";
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useLocation, useNavigate } from "react-router";
@@ -49,6 +49,7 @@ const NavigationBar = ({device}) => {
                     <div>
                         <li><a href="https://www.linkedin.com/in/robin-xia-98a1881b5/" target="_blank"><FontAwesomeIcon icon={faLinkedin} className='fa_icon_menu'/></a></li>
                         <li><a href="https://github.com/RobinXia99" target="_blank"><FontAwesomeIcon icon={faGithub} className='fa_icon_menu'/></a></li>
+                        <li><a href="https://www.artstation.com/voyance" target="_blank"><FontAwesomeIcon icon={faArtstation} className='fa_icon_menu'/></a></li>
                     </div>
                 </ul>
             </div>
@@ -63,11 +64,18 @@ const NavigationBar = ({device}) => {
             <nav className="navbar">
                 <li className="navbar_breadcrumb">{activePage}</li>
                 <ul className="web_ul">
+
                     <li><span onClick={() => navigate('/')} className={(location.pathname == '/' ? 'active' : '')}>.aboutme( )</span></li>
+
                     <li><span onClick={() => navigate('/projects')} className={(location.pathname.includes('/projects') ? 'active' : '')}>.projects( )</span></li>
+
                     <li><span onClick={() => navigate('/resume')} className={(location.pathname.includes('/resume') ? 'active' : '')}>.resume( )</span></li>
+
                     <li><a href="https://www.linkedin.com/in/robin-xia-98a1881b5/" target="_blank"><FontAwesomeIcon icon={faLinkedin} className='fa_icon'/></a></li>
+
                     <li><a href="https://github.com/RobinXia99" target="_blank"><FontAwesomeIcon icon={faGithub} className='fa_icon'/></a></li>
+
+                    <li><a href="https://www.artstation.com/voyance" target="_blank"><FontAwesomeIcon icon={faArtstation} className='fa_icon'/></a></li>
                 </ul>
             </nav>
         </div>
