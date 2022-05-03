@@ -80,7 +80,7 @@
 .project_img {
     height: auto;
     width: auto;
-    
+
     object-fit: cover !important;
 }
 
@@ -96,6 +96,10 @@
 
     .project_images {
         height: 40vh;
+    }
+
+    .project_img {
+        height: 35vh;
     }
 
     .projects_desc,.project_images {
