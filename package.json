@@ -2,7 +2,7 @@
   "name": "portfolio",
   "version": "0.1.0",
   "private": true,
-  "homepage" : "http://robinxia99.github.io",
+  "homepage": "http://robinxia99.github.io",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-brands-svg-icons": "^6.1.1",
@@ -20,6 +20,7 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "scrollmagic": "^2.0.8",
+    "swiper": "^8.1.4",
     "three": "^0.139.2",
     "web-vitals": "^2.1.4"
   },
@@ -30,7 +31,6 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
-
   },
   "eslintConfig": {
     "extends": [

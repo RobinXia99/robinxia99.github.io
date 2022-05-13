@@ -12,7 +12,7 @@ const AboutMe = () => {
                 <div>
                     <div className='name_container'>
                         <h1>I'm Robin Xia</h1>
-                        <h4>App & Web development student</h4>
+                        <h4>Frontend Developer</h4>
                     </div>
 
                     <div className='info_body'>

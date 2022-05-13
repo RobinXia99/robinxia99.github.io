@@ -1,11 +1,15 @@
 .logo {
     width: 550px;
     height: 550px;
-    animation: fadeIn 1s;
+    animation: fadeIn 1s, slideInFromRight 0.8s;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
 }
+
+
 
 .main_container.about_me {
     justify-content: space-between;
+    
   }
 
 .name_container {
@@ -48,6 +52,7 @@
     justify-content: space-between;
     height: fit-content;
     animation: fadeIn 2s;
+    padding: 20px;
 
 }
 
@@ -67,19 +72,7 @@
 
 /* ------------------------- */
 
-@keyframes slideInFromRight {
-    0% {
-      transform: translateX(100%);
-    }
-    100% {
-      transform: translateX(0);
-    }
-  }
 
-  @keyframes fadeIn {
-    0% {opacity:0;}
-    100% {opacity:1;}
-  }
 
   @media screen and (max-width: 1000px) {
 

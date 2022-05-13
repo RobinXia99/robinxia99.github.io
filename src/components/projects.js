@@ -8,7 +8,7 @@ const Projects = () => {
             <aside className='path_tag left'><span>&lt;projects&gt;</span></aside>
             <div className='title_holder projects'>
                 <h2>Projects</h2>
-                <span>// No professional works yet! In the meantime, here are some school/side projects! Currently working on React projects.</span>
+                <span>// No professional works yet! In the meantime, here are some school/side projects! Currently working with React.</span>
             </div>
             {projectsJson.map(project => (
                 <ProjectInfo project={project} key={project.title}></ProjectInfo>

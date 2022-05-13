@@ -1,6 +1,7 @@
 
 ::-webkit-scrollbar {
     width: 6px;
+    height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -80,7 +81,7 @@
 .project_img {
     height: auto;
     width: auto;
-
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
     object-fit: cover !important;
 }
 
