@@ -61,10 +61,25 @@
 
 .projects_desc h4 {
     margin-top: auto;
-    font-weight: lighter;
+    font-weight: bolder;
 
     color: #8C9AC6;
 
+}
+
+.projects_desc a {
+    text-decoration: none;
+    color: white;
+    font-weight: bolder;
+    background-color: #8C9AC6;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+.projects_desc a:hover {
+    background-color: gray;
 }
 
 .project_images {

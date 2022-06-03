@@ -30,6 +30,7 @@ const ProjectInfo = ({project}) => {
                 <h2>{project.title}</h2>
                 <p>{project.desc}</p>
                 <h4>Made using: {project.tools}</h4>
+                <a href={project.repo} target="_blank">Source / Demo</a>
             </div>
             <div className='project_images'>
                 {project.images.map(image => (
