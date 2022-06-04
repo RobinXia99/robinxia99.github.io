@@ -108,6 +108,7 @@
         gap: 50px;
         height: fit-content;
         width: 100%;
+        padding: 1.2rem 0;
     }
 
     .project_images {
@@ -121,6 +122,10 @@
     .projects_desc,.project_images {
         width: auto;
         
+    }
+
+    .projects_desc a {
+        margin: 20px 0;
     }
 
 

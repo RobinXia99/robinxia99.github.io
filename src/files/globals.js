@@ -2,7 +2,7 @@ export const projectsJson = [
 
   {
     "title": "Movie Collector",
-    "desc": "A school project meant to showcase movies through an API and a shopping function (without an actual checkout involving money). I worked with Redux for the shopping cart, Firebase for Reviews, and API calls for various components. My main work in this project was the movies swiper, front page (minus the popular genres section), detailed movie page, navigation bar (this includes searching, shopping cart, login etc) as well as a login & create account & profile page. I've also ensured that everything is responsive.",
+    "desc": "A school group project meant to showcase movies through an API and a shopping function (without an actual checkout involving money). I worked with Redux for the shopping cart, Firebase for Reviews, and API calls for various components. My main work in this project was the movies swiper, front page (minus the popular genres section), detailed movie page, navigation bar (this includes searching, shopping cart, login etc) as well as a login & create account & profile page. I've also ensured that everything is responsive.",
     "tools": "Javascript, HTML, CSS, React, Redux, Firebase, APIs",
     "images": [
       "https://imgur.com/sX4bqAg.png",
