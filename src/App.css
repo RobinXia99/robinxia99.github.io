@@ -1,89 +1,32 @@
 .App {
-  font-family: 'Avenir Book';
+  font-family: 'Monaco';
+  width: 100%;
+  box-sizing: border-box;
 }
+
+
 
 html {
-  background-image: linear-gradient(to bottom right,#141414, #16161b, #101017);
-  overflow-x: hidden;
+  /* background-image: linear-gradient(to bottom right,#141414, #16161b, #101017); */
+  /* overflow-x: hidden; */
   min-height: 100%;
-  background-color: #141414;
+  /* background-color: #141414; */
+  background-color: rgb(26, 21, 21);
 }
 
-html::before {
-  position: fixed;
+.webGL {
+  position: fixed !important;
+  width: 100vw;
+  height: 100vh;
   top: 0;
-  left: 35px;
-  display: block;
-  content: '';
-  width: 2px;
-  background: #5C477F;
-  z-index: 5;
-  height: 100%;
+  outline: none;
+  border: none;
 }
 
-
-li {
-  text-decoration: none;
-  list-style: none;
-}
-
-.main_container {
-  width: 80vw;
-    margin-top: 15vh;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    color: white;
-    align-items: center;
-
-    animation: fadeIn 1s;
-}
-
-.path_tag {
-  color: #A383C0;
-  font-weight: bolder;
-  text-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
-  width: 100%;
-  display: flex;
-  font-size: 1.2rem;
-}
-
-.path_tag.left {
-  justify-content: flex-start;
-}
-
-
-.path_tag.right {
-  justify-content: flex-end;
-}
-
-.title_holder h2 {
-  font-size: 1.8rem;
-  margin-bottom: 5px;
-}
-
-
-.title_holder span {
-  color: #939393;
-  font-size: 1rem;
-}
-
-.hidden {
-  display: none;
-}
-
-@media screen and (max-width: 1000px) {
-  .main_container {
-    justify-content: flex-start;
-    flex-direction: column;
-    align-items: center;
-}
-}
 
 @media screen and (max-width: 700px) {
-  html::before {
-    left: 20px;
-  }
+
+
 }
 
 /* Animations -------------- */

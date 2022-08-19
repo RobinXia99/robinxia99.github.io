@@ -1,52 +1,56 @@
 
 import './App.css';
 
-import NavigationBar from './components/navbar';
 import { useState } from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router';
-import AboutMe from './components/aboutme';
-import Projects from './components/projects';
-import Resume from './components/resume';
+import Header from './components/header';
+import SideBars from './components/sidebars';
+import { Canvas } from '@react-three/fiber';
+import ThreeContent from './components/threecontent';
+import { OrbitControls } from '@react-three/drei';
 
 function App() {
 
   let mediaQuery = window.matchMedia('(max-width: 700px)');
 
+  const viewport = {
+    height: window.innerHeight,
+    width: window.innerWidth
+  }
+
   const [device, setDevice] = useState(() => {
 
-    if(mediaQuery.matches) {
+    if (mediaQuery.matches) {
       return 'mobile'
-  } else {
+    } else {
       return 'web'
-  }
+    }
 
   });
 
   mediaQuery.addEventListener('change', () => {
 
-    if(mediaQuery.matches) {
+    if (mediaQuery.matches) {
       setDevice('mobile');
-  } else {
+    } else {
       setDevice('web');
-  }
+    }
   });
 
 
   return (
     <div className="App">
-      <NavigationBar device={device}/>
-      <Routes>
-        <Route exact path='/' element={
-          <AboutMe/>
-        } />
-        <Route exact path='/projects' element={
-          <Projects/>
-        } />
+      <Header/>
+      <SideBars/>
 
-        <Route exact path='/resume' element={
-          <Resume/>
-        } />
-      </Routes>
+      <Canvas
+      className='webGL'
+      camera={{ position: [0, 1, 4], fov: 50, aspect: viewport.width / viewport.height, near: 0.1, far: 150 }}
+      
+      >
+        <ThreeContent/>
+        <OrbitControls/>
+
+      </Canvas>
     </div>
   );
 }
