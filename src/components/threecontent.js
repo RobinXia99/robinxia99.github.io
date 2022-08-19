@@ -22,7 +22,7 @@ function SceneTerrain() {
     return(
         <mesh rotation-x={- Math.PI / 2} position-y={-0.5}>
             <planeBufferGeometry args={[12, 12, 6, 6]}/>
-            <meshStandardMaterial wireframe/>
+            <meshStandardMaterial wireframe color={"#f6b26b"}/>
         </mesh>
     )
 
@@ -54,9 +54,10 @@ function Cube() {
     return (
         <animated.mesh ref={cubeRef} scale={scale} onClick={() => setActive(!active)}>
             <boxBufferGeometry args={[0.5, 0.5, 0.5]}/>
-            <meshStandardMaterial color={"#f6b26b"}/>
+            <meshNormalMaterial />
         </animated.mesh>
     )
+    // color={"#f6b26b"}
 
 }
 
@@ -65,7 +66,7 @@ function Lightning() {
     return(
         <>
         <ambientLight args={["#b9d5ff", 0.2]}/>
-        <directionalLight position={[5, 8, -3]} args={["#ffffff", 0.5]}/>
+        {/* <directionalLight position={[5, 8, -3]} args={["#ffffff", 0.5]}/> */}
         </>
     )
 

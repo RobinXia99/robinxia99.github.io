@@ -44,7 +44,7 @@ function App() {
 
       <Canvas
       className='webGL'
-      camera={{ position: [0, 1, 4], fov: 50, aspect: viewport.width / viewport.height, near: 0.1, far: 150 }}
+      camera={{ position: [0, 0.5, 6.5], fov: 50, aspect: viewport.width / viewport.height, near: 0.1, far: 150 }}
       
       >
         <ThreeContent/>
