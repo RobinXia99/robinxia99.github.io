@@ -1,6 +1,8 @@
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../styles/header.css';
 
-export default function Header() {
+export default function Header({ device }) {
 
 
     return (
@@ -16,27 +18,29 @@ export default function Header() {
                     </span>
                 </a>
 
-                <ol>
-                    <a href='/#about'>
-                        <span>01.</span> About
-                    </a>
-                    <a href='/#projects'>
-                        <span>02.</span> Projects
-                    </a>
-                    <a href='/#resume'>
-                        <span>03.</span> Resume
-                    </a>
-                </ol>
+                {device == "web" ?
+                    <ol>
+                        <a href='/#about'>
+                            <span>01.</span> About
+                        </a>
+                        <a href='/#projects'>
+                            <span>02.</span> Projects
+                        </a>
+                        <a href='/#resume'>
+                            <span>03.</span> Resume
+                        </a>
+                    </ol>
+                    :
+                    <>
+                        <FontAwesomeIcon icon={faBars} className={'menu_icon'}/>
+                    </>
+                    }
+
+            
+                
 
 
-                {/* <input type="checkbox" id="menyAvPaa"/>
-                    <label id="burger" htmlFor='menyAvPaa'>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </label>
-                    <nav id="meny">
-                    </nav> */}
+                
 
             </nav>
         </header>

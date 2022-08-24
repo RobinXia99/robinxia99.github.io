@@ -24,9 +24,9 @@
 }
 
 .socials_icon {
-    color: rgb(170, 170, 170);
+    color: gray;
     box-shadow: 1px solid rgba(0, 0, 0, 0.7);
-    margin: 12px 0px;
+    margin: 10px 0px;
     font-size: 22px;
 
     cursor: pointer;
@@ -36,7 +36,6 @@
 
 .socials_icon:hover {
     transform: translateY(-5px);
-    transform: rotate(360deg);
     color: orange;
 }
 

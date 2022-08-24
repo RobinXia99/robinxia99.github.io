@@ -7,6 +7,7 @@ import SideBars from './components/sidebars';
 import { Canvas } from '@react-three/fiber';
 import ThreeContent from './components/threecontent';
 import { OrbitControls } from '@react-three/drei';
+import MainFlow from './components/main_flow';
 
 function App() {
 
@@ -39,16 +40,15 @@ function App() {
 
   return (
     <div className="App">
-      <Header/>
-      <SideBars/>
+      <Header device={device}/>
+      {device == "web" ? <SideBars/> : null}
+      <MainFlow viewport={viewport}/>
 
       <Canvas
       className='webGL'
-      camera={{ position: [0, 0.5, 6.5], fov: 50, aspect: viewport.width / viewport.height, near: 0.1, far: 150 }}
-      
+      camera={{ position: [0, 0, 3], fov: 50, aspect: viewport.width / viewport.height, near: 0.1, far: 150 }}
       >
         <ThreeContent/>
-        <OrbitControls/>
 
       </Canvas>
     </div>

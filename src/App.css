@@ -2,6 +2,10 @@
   font-family: 'Monaco';
   width: 100%;
   box-sizing: border-box;
+  background: -webkit-linear-gradient(to left, #1b1b1d, #000000);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #1b1b1c, #000000);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 
@@ -11,23 +15,26 @@ html {
   /* overflow-x: hidden; */
   min-height: 100%;
   /* background-color: #141414; */
-  background-color: rgb(26, 21, 21);
+  
+  background: #101010 !important;
+  /* fallback for old browsers */
+  
+
 }
 
 .webGL {
   position: fixed !important;
-  width: 100vw;
-  height: 100vh;
+  width: 100vw !important;
+  height: 100vh !important;
   top: 0;
   outline: none;
   border: none;
+  z-index: 1;
+  background-color: transparent;
 }
 
 
-@media screen and (max-width: 700px) {
-
-
-}
+@media screen and (max-width: 700px) {}
 
 /* Animations -------------- */
 
@@ -35,21 +42,28 @@ html {
   0% {
     transform: translateX(100%);
   }
+
   100% {
     transform: translateX(0);
   }
 }
 
 @keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes slideDownFromTop {
   0% {
     transform: translatey(-100%);
   }
+
   100% {
     transform: translateY(0);
-  } 
+  }
 }
