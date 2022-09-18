@@ -80,3 +80,24 @@ export const projectsJson = [
     "repo": "https://www.artstation.com/voyance"
   }
 ]
+
+export const otherProjects = [
+  {
+    "title": "Ghibli Films",
+    "desc": "This web app takes data from a Studio Ghibli API and showcases various films and information regarding them.",
+    "tools": ["JS", "HTML", "CSS"],
+    "source": ["https://github.com/RobinXia99/Ghibli-Films", "https://robinxia.me/Ghibli-Films/"]
+  },
+  {
+    "title": "Pocket Blackjack",
+    "desc": "A simple Blackjack card game. It includes the classic ruleset, betting after each round as well as a high score list to keep track of maximum cash amount before cashing out!",
+    "tools": ["Kotlin", "Room"],
+    "source": ["https://github.com/RobinXia99/Blackjack"]
+  },
+  {
+    "title": "Doggie Daycare",
+    "desc": "A prototype Dog Daycare webapp made during my introduction into React. A homepage and a dog registry.",
+    "tools": ["React", "HTML", "CSS"],
+    "source": ["https://github.com/RobinXia99/dogdaycare", "https://robinxia.me/dogdaycare/"]
+  }
+]

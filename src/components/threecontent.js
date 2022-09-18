@@ -3,16 +3,17 @@ import gsap from 'gsap';
 import { Sky, Sparkles, Stars, useTexture } from '@react-three/drei';
 import { useEffect, useRef, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { config, useSpring, animated } from '@react-spring/three';
-import { BoxBufferGeometry, GridHelper } from 'three';
+import { config, useSpring } from '@react-spring/three';
 
 export default function ThreeContent({ scale = Array.from({ length: 50 }, () => 0.5 + Math.random() * 4) }) {
+
+
 
     return (
         <>
             <Lightning />
             <Scene />
-            <Sparkles count={50} size={scale} position={[0, 0, 0]} scale={[4, 1.5, 4]} speed={0.3} />
+            <Sparkles color={new THREE.Color( 0xffffff )} count={1000} size={scale} position={[0, 0, 0]} scale={window.innerWidth > 700 ? [-5, 70, 5] : [-1, 100, 1]} speed={0.3} />
             <Stars radius={50} depth={45} count={1000} factor={4} saturation={0} fade speed={2} />
             {/* <Sky distance={450000} sunPosition={[0, 1, 0]} inclination={0} azimuth={0.25}  /> */}
         </>
@@ -65,10 +66,18 @@ function Cube() {
     //     )
     // }
 
+    let scrollY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+        scrollY = window.scrollY;
+    })
+
     
 
 
-    useFrame(({ clock }) => {
+    useFrame(({ clock, camera }) => {
+
+        camera.position.y = - scrollY / window.innerHeight * 4;
 
         if (cubeRef.current) {
             cubeRef.current.rotation.y = clock.elapsedTime * 0.12
@@ -79,12 +88,21 @@ function Cube() {
 
     })
 
+    const viewport = {
+        height: window.innerHeight,
+        width: window.innerWidth
+      }
+
 
 
     return (
-        <mesh ref={cubeRef} position={[1, -0.2, 0]} >
+        <mesh
+        ref={cubeRef}
+        position={viewport.width > 700 ? [1, -0.2, 0] : [0, 0, -0.5]}
+        scale={viewport.width > 700 ? 1 : 0.8}
+        >
             <boxBufferGeometry args={[1, 1, 1, 64, 64]} />
-            <meshStandardMaterial {...textures} displacementScale={0} emissive={"#ffff00"} />
+            <meshStandardMaterial {...textures} displacementScale={0} emissive={(window.innerWidth > 700) ? null : null} />
         </mesh>
     )
     // color={"#f6b26b"}
@@ -96,7 +114,7 @@ function Lightning() {
     return (
         <>
             <ambientLight args={["#ffffff", 0.2]} />
-            <directionalLight position={[1, 1, 4]} args={["#ffffff", 0.5]} />
+            <directionalLight position={[1, 2, 2]} args={["#ffffff", 0.5]} />
         </>
     )
 

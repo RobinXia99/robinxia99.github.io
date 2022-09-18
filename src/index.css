@@ -13,7 +13,7 @@ code {
 }
 
 :root {
-  --nav_height: 100px;
+  --nav_height: 85px;
   --main_text_color: white;
-  
+  --main_color_theme: #4cc2d9;
 }

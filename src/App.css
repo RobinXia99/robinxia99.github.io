@@ -1,10 +1,8 @@
 .App {
-  font-family: 'Monaco';
+  font-family: Arial;
   width: 100%;
   box-sizing: border-box;
-  background: -webkit-linear-gradient(to left, #1b1b1d, #000000);
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #1b1b1c, #000000);
+  
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
@@ -16,9 +14,11 @@ html {
   min-height: 100%;
   /* background-color: #141414; */
   
-  background: #101010 !important;
+  background: -webkit-linear-gradient(to left, #171717, #000000);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #171717, #000000);
   /* fallback for old browsers */
-  
+
 
 }
 
@@ -29,8 +29,30 @@ html {
   top: 0;
   outline: none;
   border: none;
-  z-index: 1;
   background-color: transparent;
+  z-index: -1;
+}
+
+.headline_divider {
+  height: 1px;
+  width: 100%;
+  background-color: var(--main_color_theme);
+  margin: 10px auto;
+
+}
+
+.reveal {
+  position: relative;
+  opacity: 0;
+  transform: translateY(150px);
+  transition: all 1s ease;
+
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0px);
+
 }
 
 
