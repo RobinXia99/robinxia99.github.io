@@ -84,9 +84,12 @@ export default function Header({ device, aboutRef, projectsRef, skillsRef }) {
                 <a href='/' className='nav_home'>
                     <span>
                         <img src='/rx.svg' alt='App logo'/>
+                        <p>
                         Robin Xia
                         <br />
                         Application Developer
+                        </p>
+                        
                     </span>
                 </a>
 

@@ -75,13 +75,13 @@
     .about_me_container {
         flex-direction: column;
         padding: 50px 0;
-        font-size: 20px;
+        font-size: 18px;
         background-color: rgb(22, 22, 22);
         border-radius: 5px;
     }
 
     .pfp_container {
-        width: 85vw;
+        width: 70vw;
         height: auto;
     }
 
