@@ -516,12 +516,14 @@
 
     .more_projects_container {
         width: 85%;
+        height: fit-content;
     }
 
     .other_project {
         width: 95%;
         height: 35vh;
         padding: 10px 0 !important;
+        margin: 10px 0;
     }
 
 }
