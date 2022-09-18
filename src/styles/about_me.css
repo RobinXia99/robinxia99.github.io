@@ -5,7 +5,7 @@
     align-items: center;
     flex-direction: row;
     gap: 50px;
-    padding: 100px 0;
+    padding: 50px 0;
 }
 
 .about_me_container .content_container {
@@ -74,10 +74,10 @@
     }
     .about_me_container {
         flex-direction: column;
-        padding: 50px 0;
+        padding: 20px 0;
         font-size: 18px;
-        background-color: rgb(22, 22, 22);
         border-radius: 5px;
+        background-color: #1d1d1dad;
     }
 
     .pfp_container {

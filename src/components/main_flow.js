@@ -118,8 +118,8 @@ function AboutMe() {
                 <p className='about_me_text'>
                     Hello! My name is Robin and what drives me forward in my work is seeing ideas materialize into real & usable applications and websites.
                     <br/>
-                    In just a little bit over a year, I've set foot in native iOS & Android, Web, and Cross platform app development.
                     <br/>
+                    In just a little bit over a year, I've set foot in native iOS & Android, Web, and Cross platform app development.
                     Throughout my journey, I've realized that my interest in this field is not really rooted in coding, but in the creative freedom that it brings.
                     The day dreams and the ideas that arise during the train ride home are no longer a source of disappointment when I realize It's just fantasies. They're sources for inspiration.
                     <br/>
