@@ -1,24 +1,12 @@
 import '../styles/resume.css';
 
-import cv from '../files/robinxiacv.pdf';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 
 const Resume = () => {
 
     return (
         <div className='main_container resume'>
-            <aside className='path_tag left'><span>&lt;resume&gt;</span></aside>
-
-            <div className='title_holder'>
-                <h2>Resume</h2>
-                <div className='resume_dl'>
-                    Download my <a href={cv} target='_blank'>CV</a>
-                </div>
-            </div>
             
             <div className='columns skills'>
-                <h3>Skills</h3>
                 <div>
                     <ul>
                         <li>Frontend Development</li>
@@ -26,7 +14,7 @@ const Resume = () => {
                     </ul>
 
                     <ul>
-                        <li>Agile Project Management</li>
+                        <li>Agile Workflow</li>
                         <li>Scrum</li>
                     </ul>
                 </div>
@@ -37,21 +25,20 @@ const Resume = () => {
                 <div>
                     <ul>
                         <li>Javascript</li>
+                        <li>Typescript</li>
+                        <li>Swift</li>
+                        <li>Kotlin</li>
                         <li>HTML</li>
                         <li>CSS</li>
+                        
+                    </ul>
+
+                    <ul>
                         <li>React</li>
+                        <li>React Native</li>
                         <li>Redux</li>
-                    </ul>
-
-                    <ul>
-                        <li>Swift</li>
                         <li>SwiftUI</li>
-                        <li>UIKit</li>
-                    </ul>
-
-                    <ul>
-                        <li>Kotlin</li>
-                        <li>XML</li>
+                        <li>Firebase</li>
                     </ul>
 
                     <ul>
@@ -59,7 +46,7 @@ const Resume = () => {
                         <li>Figma</li>
                         <li>Blender</li>
                         <li>Git</li>
-                        <li>Firebase</li>
+                        <li>Linear</li>
                     </ul>
                 </div>
             </div>

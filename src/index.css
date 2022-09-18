@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+:root {
+  --nav_height: 85px;
+  --main_text_color: white;
+  --main_color_theme: #4cc2d9;
+}
