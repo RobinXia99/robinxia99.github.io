@@ -1,15 +1,15 @@
 .about_me_container {
     width: 95%;
-    margin: auto;
     display: flex;
     align-items: center;
     flex-direction: row;
     gap: 50px;
     padding: 100px 0;
+    justify-content: center;
 }
 
-.about_me_container .content_container {
-    width: 50%;
+.about_me_container .content_container:first-of-type {
+    width: 45%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -70,7 +70,7 @@
 
 @media screen and (max-width: 850px) {
     .about_me_container .content_container {
-        width: 90%;
+        width: 90% !important;
     }
     .about_me_container {
         flex-direction: column;
