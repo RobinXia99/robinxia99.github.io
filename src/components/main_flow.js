@@ -3,6 +3,7 @@ import "../styles/main_flow.css";
 import "../styles/about_me.css";
 import Resume from "./resume";
 import { FeaturedProjects, OtherProject } from "./Projects";
+import AlertBar from "./alertBar";
 
 export default function MainFlow({
   viewport,
@@ -27,6 +28,7 @@ export default function MainFlow({
 
   return (
     <div className="main_container">
+      <AlertBar />
       <section className="section">
         <div className="name_section">
           <h1>
@@ -131,6 +133,7 @@ function AboutMe() {
           </a>{" "}
           as a React Native app developer. Here, I get to work on many different
           projects and everyday is a lesson.
+          <br />
         </p>
       </div>
       <div className="content_container">
