@@ -1,15 +1,15 @@
 import { otherProjects } from "../files/globals";
 import "../styles/main_flow.css";
 import "../styles/about_me.css";
-import Resume from "./resume";
 import { FeaturedProjects, OtherProject } from "./Projects";
-import AlertBar from "./alertBar";
+import AboutMe from "./aboutMe";
+import Experience from "./experience";
 
 export default function MainFlow({
   viewport,
   aboutRef,
+  experienceRef,
   projectsRef,
-  skillsRef,
 }) {
   window.addEventListener("scroll", reveal);
 
@@ -28,7 +28,7 @@ export default function MainFlow({
 
   return (
     <div className="main_container">
-      <AlertBar />
+      {/* <AlertBar /> */}
       <section className="section">
         <div className="name_section">
           <h1>
@@ -36,10 +36,10 @@ export default function MainFlow({
             <br />
             I'm <span className="r_style">Robin</span>,
             <br />
-            <span className="profession">I build websites and apps.</span>
+            <span className="profession">I build mobile apps.</span>
             <br />
             <p>
-              Mobile - Web - Frontend
+              Mobile - Web - Fullstack
               <br />
             </p>
           </h1>
@@ -68,13 +68,28 @@ export default function MainFlow({
       </section>
 
       <section className="section">
+        <div
+          className="section_headline reveal"
+          id="skills_section"
+          ref={experienceRef}
+        >
+          <span>- 02 -</span>
+          <span>Experience</span>
+          <div className="headline_divider" />
+        </div>
+        <div className="reveal">
+          <Experience />
+        </div>
+      </section>
+
+      <section className="section">
         <div className="project_container reveal">
           <div
             className="section_headline"
             id="project_section"
             ref={projectsRef}
           >
-            <span>- 02 -</span>
+            <span>- 03 -</span>
             <span>Featured Projects</span>
             <div className="headline_divider" />
           </div>
@@ -92,56 +107,6 @@ export default function MainFlow({
           </div>
         </div>
       </section>
-
-      <section>
-        <div className="section_headline" id="skills_section" ref={skillsRef}>
-          <span>- 03 -</span>
-          <span>Skills</span>
-          <div className="headline_divider" />
-        </div>
-
-        <Resume />
-      </section>
-    </div>
-  );
-}
-
-function AboutMe() {
-  return (
-    <div className="about_me_container reveal">
-      <div className="content_container">
-        <p className="about_me_text">
-          Hello! My name is Robin and what drives me forward in my work is the
-          satisfaction of creating plans and ideas in your head and then
-          creating them.
-          <br />
-          <br />
-          Throughout my journey, I've realized that my interest in this field is
-          not only rooted in coding, but in the creative freedom that it brings.
-          The day dreams and the ideas that arise during the train ride home are
-          no longer a source of disappointment when I realize It's just
-          fantasies. They're sources for inspiration.
-          <br />
-          <br />
-          Currently, I'm working at{" "}
-          <a
-            href="https://www.hackberry.se/"
-            target={"_blank"}
-            rel="noreferrer"
-          >
-            Hackberry
-          </a>{" "}
-          as a React Native app developer. Here, I get to work on many different
-          projects and everyday is a lesson.
-          <br />
-        </p>
-      </div>
-      <div className="content_container">
-        <div className="pfp_container">
-          <img className="about_me_pfp" src="./pfp.png" alt="profile" />
-          <div className="about_me_pfp_cover" />
-        </div>
-      </div>
     </div>
   );
 }

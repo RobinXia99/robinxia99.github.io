@@ -1,8 +1,7 @@
 import * as THREE from "three";
 import { Sparkles, Stars, useTexture } from "@react-three/drei";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
-import { config, useSpring } from "@react-spring/three";
 
 export default function ThreeContent({
   scale = Array.from({ length: 50 }, () => 0.5 + Math.random() * 4),
@@ -44,13 +43,6 @@ function Scene() {
 function Cube() {
   const cubeRef = useRef();
 
-  const [active, setActive] = useState(false);
-
-  const { scale } = useSpring({
-    scale: active ? 1.5 : 1,
-    config: config.wobbly,
-  });
-
   const textures = useTexture({
     map: "/texture_abstract/abstract_color.png",
     displacementMap: "/texture_abstract/abstract_height.png",
@@ -60,19 +52,6 @@ function Cube() {
     roughnessMap: "/texture_abstract/abstract_roughness.png",
     emissiveMap: "/texture_abstract/abstract_emissive_orange.png",
   });
-
-  // function spin() {
-  //     console.log('cubespin')
-  //     gsap.to(
-  //         cubeRef.current.rotation, {
-  //         duration: 1.5,
-  //         ease: 'power2.inOut',
-  //         x: '+=6',
-  //         y: '+=3',
-  //         z: '+=1.5'
-  //     }
-  //     )
-  // }
 
   let scrollY = window.scrollY;
 
@@ -109,13 +88,12 @@ function Cube() {
       />
     </mesh>
   );
-  // color={"#f6b26b"}
 }
 
 function Lightning() {
   return (
     <>
-      <ambientLight args={["#ffffff", 0.2]} />
+      <ambientLight args={["#ffffff", 0.6]} />
       <directionalLight position={[1, 2, 2]} args={["#ffffff", 0.5]} />
     </>
   );

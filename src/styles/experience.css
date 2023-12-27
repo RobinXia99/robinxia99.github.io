@@ -1,0 +1,130 @@
+.main_container.resume {
+  flex-direction: column;
+  padding: 50px 0;
+  width: 100%;
+}
+
+.experience_column {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding: 24px;
+  gap: 24px;
+}
+
+.experience_timeframe {
+  color: var(--main_color_theme);
+  width: 20%;
+}
+
+.experience_card {
+  max-width: 50%;
+  border-radius: 10px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  background-color: #1d1d1d;
+  transition: 0.8s;
+  cursor: pointer;
+  text-decoration: none;
+
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+}
+
+.experience_card:hover {
+  background-color: var(--main_color_theme);
+  opacity: 0.9;
+}
+
+.experience_card:hover .experience_card_undertitle {
+  color: white;
+}
+
+:root[style*="--main_color_theme: #ffffff"]
+  .experience_card:hover
+  .experience_card_title,
+:root[style*="--main_color_theme: #ffffff"]
+  .experience_card:hover
+  .experience_card_undertitle,
+:root[style*="--main_color_theme: #ffffff"]
+  .experience_card:hover
+  .experience_card_text {
+  color: black;
+}
+
+.experience_card_title {
+  color: white;
+  padding: 0;
+  margin: 0;
+}
+
+.experience_card_undertitle {
+  color: var(--main_color_theme);
+  margin: 5px 0;
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+}
+
+.experience_card_text {
+  color: white;
+}
+
+.experience_card_text.cursive {
+  font-weight: bolder;
+}
+
+.experience_card_link_row {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 750px) {
+  .main_container.resume {
+    width: 90%;
+  }
+
+  .experience_card {
+    max-width: 100%;
+    width: 85%;
+  }
+
+  .experience_card:hover {
+    background-color: #1d1d1d;
+    opacity: 1;
+    transition: none;
+  }
+
+  :root[style*="--main_color_theme: #ffffff"]
+    .experience_card:hover
+    .experience_card_title,
+  :root[style*="--main_color_theme: #ffffff"]
+    .experience_card:hover
+    .experience_card_undertitle,
+  :root[style*="--main_color_theme: #ffffff"]
+    .experience_card:hover
+    .experience_card_text {
+    color: var(--main_color_theme);
+  }
+
+  .experience_timeframe {
+    width: 100%;
+    padding-bottom: 24px;
+  }
+
+  .experience_column {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+  }
+
+  .experience_card:hover {
+    background-color: #1d1d1d;
+    opacity: 1;
+  }
+}

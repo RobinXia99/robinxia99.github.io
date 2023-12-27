@@ -9,7 +9,12 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function Header({ device, aboutRef, projectsRef, skillsRef }) {
+export default function Header({
+  device,
+  aboutRef,
+  experienceRef,
+  projectsRef,
+}) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleChange = (event) => {
@@ -87,7 +92,7 @@ export default function Header({ device, aboutRef, projectsRef, skillsRef }) {
             <img src="/rx.svg" alt="App logo" />
             Robin Xia
             <br />
-            Application Developer
+            Mobile Application Developer
           </span>
         </a>
 
@@ -96,11 +101,14 @@ export default function Header({ device, aboutRef, projectsRef, skillsRef }) {
             <a href="/#about" onClick={() => handleNavigation(aboutRef)}>
               <span>01.</span> About
             </a>
-            <a href="/#projects" onClick={() => handleNavigation(projectsRef)}>
-              <span>02.</span> Projects
+            <a
+              href="/#projects"
+              onClick={() => handleNavigation(experienceRef)}
+            >
+              <span>02.</span> Experience
             </a>
-            <a href="/#skills" onClick={() => handleNavigation(skillsRef)}>
-              <span>03.</span> Skills
+            <a href="/#skills" onClick={() => handleNavigation(projectsRef)}>
+              <span>03.</span> Projects
             </a>
 
             <a
@@ -147,12 +155,15 @@ export default function Header({ device, aboutRef, projectsRef, skillsRef }) {
                 </a>
                 <a
                   href="/#projects"
+                  onClick={() => handleNavigation(experienceRef)}
+                >
+                  <span>02.</span> Experience
+                </a>
+                <a
+                  href="/#skills"
                   onClick={() => handleNavigation(projectsRef)}
                 >
-                  <span>02.</span> Projects
-                </a>
-                <a href="/#skills" onClick={() => handleNavigation(skillsRef)}>
-                  <span>03.</span> Skills
+                  <span>03.</span> Projects
                 </a>
 
                 <a

@@ -1,99 +1,93 @@
 .about_me_container {
-    width: 95%;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    gap: 50px;
-    padding: 100px 0;
-    justify-content: center;
+  width: 95%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 50px;
+  padding: 100px 0;
+  justify-content: center;
 }
 
 .about_me_container .content_container:first-of-type {
-    width: 45%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  width: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .about_me_text {
-    color: rgb(200, 200, 200);
-    line-height: 25px;
+  color: white;
+  line-height: 25px;
 }
 
 .about_me_text a {
-    color: var(--main_color_theme);
-    transition: 0.3s;
-    cursor: pointer;
-    text-decoration: none;
+  color: var(--main_color_theme);
+  transition: 0.3s;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .about_me_text a:hover {
-    border-bottom: 1px solid var(--main_color_theme);
-
+  border-bottom: 1px solid var(--main_color_theme);
 }
 
-
 .pfp_container {
-    height: 50vh;
-    width: auto;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 50vh;
+  width: auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .about_me_pfp {
-    display: block;
-    width: auto;
-    height: 100%;
-    border-radius: 5px;
+  display: block;
+  width: auto;
+  height: 100%;
+  border-radius: 5px;
 }
 
-
 .about_me_pfp_cover {
-    border-radius:  5px;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    background-color: var(--main_color_theme);
-    opacity: 0.5;
-    transition: 0.3s ease-in;
+  border-radius: 5px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: var(--main_color_theme);
+  opacity: 0.5;
+  transition: 0.3s ease-in;
 }
 
 .about_me_pfp_cover:hover {
-    opacity: 0;
-    
+  opacity: 0;
 }
 
 @media screen and (max-width: 850px) {
-    .about_me_container .content_container {
-        width: 90% !important;
-    }
-    .about_me_container {
-        flex-direction: column;
-        padding: 50px 0;
-        font-size: 20px;
-        background-color: rgb(22, 22, 22);
-        border-radius: 5px;
-    }
+  .about_me_container .content_container {
+    width: 90% !important;
+  }
+  .about_me_container {
+    flex-direction: column;
+    padding: 50px 0;
+    background-color: rgb(22, 22, 22);
+    border-radius: 5px;
+  }
 
-    .pfp_container {
-        width: 85vw;
-        height: auto;
-    }
+  .pfp_container {
+    width: 85vw;
+    height: auto;
+  }
 
-    .about_me_pfp {
-        width: 90%;
-        height: auto;
-    }
+  .about_me_pfp {
+    width: 90%;
+    height: auto;
+  }
 
-    .about_me_pfp_cover {
-        width: 90%;
-        right: auto;
-        left: auto;
-    }
-
+  .about_me_pfp_cover {
+    width: 90%;
+    right: auto;
+    left: auto;
+  }
 }

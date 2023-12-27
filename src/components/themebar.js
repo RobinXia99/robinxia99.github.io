@@ -22,8 +22,8 @@ export default function ThemeBar() {
         onClick={() => handleThemeChange("#ffffff")}
       />
       <div
-        className="color_theme theme_red"
-        onClick={() => handleThemeChange("#da2929")}
+        className="color_theme theme_purple"
+        onClick={() => handleThemeChange("#6b49c9")}
       />
       <div
         className="color_theme theme_green"
