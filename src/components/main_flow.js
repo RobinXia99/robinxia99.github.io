@@ -4,6 +4,7 @@ import "../styles/about_me.css";
 import { FeaturedProjects, OtherProject } from "./Projects";
 import AboutMe from "./aboutMe";
 import Experience from "./experience";
+import AlertBar from "./alertBar";
 
 export default function MainFlow({
   viewport,
@@ -28,7 +29,7 @@ export default function MainFlow({
 
   return (
     <div className="main_container">
-      {/* <AlertBar /> */}
+      <AlertBar />
       <section className="section">
         <div className="name_section">
           <h1>
