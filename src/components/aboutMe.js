@@ -19,7 +19,7 @@ export default function AboutMe() {
       </div>
       <div className="content_container">
         <div className="pfp_container">
-          <img className="about_me_pfp" src="./pfp.png" alt="profile" />
+          <img className="about_me_pfp" src="./pfp.jpg" alt="profile" />
           <div className="about_me_pfp_cover" />
         </div>
       </div>
