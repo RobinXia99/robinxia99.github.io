@@ -1,11 +1,12 @@
 import "./App.css";
 
-import { useRef, useState } from "react";
+import { Suspense, useRef, useState } from "react";
 import Header from "./components/header";
 import SideBars from "./components/sidebars";
 import { Canvas } from "@react-three/fiber";
 import ThreeContent from "./components/threecontent";
 import MainFlow from "./components/main_flow";
+import LoadingScreen from "./components/LoadingScreen";
 
 function App() {
   let mediaQuery = window.matchMedia("(max-width: 700px)");
@@ -51,6 +52,7 @@ function App() {
         projectsRef={projectsRef}
       />
 
+      <LoadingScreen />
       <Canvas
         className="webGL"
         camera={{
@@ -61,7 +63,9 @@ function App() {
           far: 150,
         }}
       >
-        <ThreeContent />
+        <Suspense fallback={null}>
+          <ThreeContent />
+        </Suspense>
       </Canvas>
     </div>
   );
