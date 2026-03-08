@@ -74,12 +74,16 @@ function RollingCube({ startX, startZ, accentColor, mode, scrollThreshold }) {
 
   const gridOrigin = useMemo(() => new THREE.Vector3(0, -2, 0), []);
 
-  // Transform a local grid-space position to world space
+  // Reusable objects — avoid per-frame allocations
+  const _tmpVec = useMemo(() => new THREE.Vector3(), []);
+  const _tmpVec2 = useMemo(() => new THREE.Vector3(), []);
+  const _tmpVec3 = useMemo(() => new THREE.Vector3(), []);
+  const _tmpQuat = useMemo(() => new THREE.Quaternion(), []);
+  const _rollAxis = useMemo(() => new THREE.Vector3(), []);
+
+  // Transform a local grid-space position to world space (reuses _tmpVec)
   const applyGridTransform = (x, y, z) => {
-    const v = new THREE.Vector3(x, y, z);
-    v.applyQuaternion(gridRotQuat);
-    v.add(gridOrigin);
-    return v;
+    return _tmpVec.set(x, y, z).applyQuaternion(gridRotQuat).add(gridOrigin);
   };
 
   useFrame(() => {
@@ -105,8 +109,12 @@ function RollingCube({ startX, startZ, accentColor, mode, scrollThreshold }) {
         const MIN_Z = -4;
         const MAX_Z = 5;
 
-        // Pick a random valid direction
-        const shuffled = [...DIRS].sort(() => Math.random() - 0.5);
+        // Pick a random valid direction (Fisher-Yates on 4 items)
+        const shuffled = [...DIRS];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
         let picked = null;
         for (const dir of shuffled) {
           const nx = s.gx + dir.dx;
@@ -131,7 +139,7 @@ function RollingCube({ startX, startZ, accentColor, mode, scrollThreshold }) {
     }
 
     // Animate roll smoothly
-    s.rollProgress += 0.05; // fixed speed per frame for smoothness
+    s.rollProgress += 0.05;
     const t = Math.min(s.rollProgress, 1);
     const eased = easeInOutCubic(t);
     const angle = eased * (Math.PI / 2);
@@ -144,46 +152,37 @@ function RollingCube({ startX, startZ, accentColor, mode, scrollThreshold }) {
 
     // Pivot is at the leading bottom edge
     const pivotX = cx + dir.dx * HALF;
-    const pivotY = 0;
     const pivotZ = cz + dir.dz * HALF;
 
-    // Cube center offset from pivot
-    const offsetX = -dir.dx * HALF;
-    const offsetY = HALF;
-    const offsetZ = -dir.dz * HALF;
-
-    // Rotate offset around pivot axis
-    const rollAxis = new THREE.Vector3(dir.ax, dir.ay, dir.az);
-    const rollQuat = new THREE.Quaternion().setFromAxisAngle(rollAxis, angle);
-    const offset = new THREE.Vector3(offsetX, offsetY, offsetZ).applyQuaternion(rollQuat);
+    // Rotate offset around pivot axis (reuse temp objects)
+    _rollAxis.set(dir.ax, dir.ay, dir.az);
+    _tmpQuat.setFromAxisAngle(_rollAxis, angle);
+    _tmpVec2.set(-dir.dx * HALF, HALF, -dir.dz * HALF).applyQuaternion(_tmpQuat);
 
     // Final position in grid-local space, then transform to world
-    const localPos = new THREE.Vector3(
-      pivotX + offset.x,
-      pivotY + offset.y,
-      pivotZ + offset.z
-    );
-
-    const worldPos = localPos.applyQuaternion(gridRotQuat).add(gridOrigin);
-    group.position.copy(worldPos);
+    _tmpVec3.set(pivotX + _tmpVec2.x, _tmpVec2.y, pivotZ + _tmpVec2.z)
+      .applyQuaternion(gridRotQuat)
+      .add(gridOrigin);
+    group.position.copy(_tmpVec3);
 
     // Cube rotation = gridRot * rollQuat * baseQuat
-    group.quaternion.copy(gridRotQuat).multiply(rollQuat).multiply(s.baseQuat);
+    group.quaternion.copy(gridRotQuat).multiply(_tmpQuat).multiply(s.baseQuat);
 
     if (t >= 1) {
       s.gx += dir.dx;
       s.gz += dir.dz;
 
-      const finalRoll = new THREE.Quaternion().setFromAxisAngle(rollAxis, Math.PI / 2);
-      s.baseQuat.premultiply(finalRoll);
+      _tmpQuat.setFromAxisAngle(_rollAxis, Math.PI / 2);
+      s.baseQuat.premultiply(_tmpQuat);
 
       s.rolling = false;
       s.rollProgress = 0;
-
     }
   });
 
-  const initPos = applyGridTransform(startX * CELL + HALF, HALF, startZ * CELL + HALF);
+  const initPos = new THREE.Vector3(
+    startX * CELL + HALF, HALF, startZ * CELL + HALF
+  ).applyQuaternion(gridRotQuat).add(gridOrigin);
 
   return (
     <group ref={groupRef} position={initPos}>

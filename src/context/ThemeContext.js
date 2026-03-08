@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback, useMemo } from 'react';
 
 const ThemeContext = createContext();
 
@@ -69,8 +69,10 @@ export function ThemeProvider({ children }) {
     localStorage.setItem('accent-color', color);
   }, []);
 
+  const value = useMemo(() => ({ mode, accentColor, toggleMode, setAccentColor: updateAccentColor }), [mode, accentColor, toggleMode, updateAccentColor]);
+
   return (
-    <ThemeContext.Provider value={{ mode, accentColor, toggleMode, setAccentColor: updateAccentColor }}>
+    <ThemeContext.Provider value={value}>
       {children}
     </ThemeContext.Provider>
   );

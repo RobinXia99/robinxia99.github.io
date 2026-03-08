@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useCallback } from 'react';
+import { createContext, useContext, useState, useCallback, useMemo } from 'react';
 
 const CursorContext = createContext();
 
@@ -8,8 +8,10 @@ export function CursorProvider({ children }) {
   const onHover = useCallback(() => setIsHovering(true), []);
   const onLeave = useCallback(() => setIsHovering(false), []);
 
+  const value = useMemo(() => ({ isHovering, onHover, onLeave }), [isHovering, onHover, onLeave]);
+
   return (
-    <CursorContext.Provider value={{ isHovering, onHover, onLeave }}>
+    <CursorContext.Provider value={value}>
       {children}
     </CursorContext.Provider>
   );

@@ -124,7 +124,7 @@ function ImageLightbox({ images, title, startIndex, onClose }) {
         <button className="project-modal__close image-lightbox__close" onClick={onClose} data-cursor="pointer" aria-label="Close">
           <FontAwesomeIcon icon={faTimes} />
         </button>
-        <img className="image-lightbox__img" src={images[index]} alt={`${title} screenshot ${index + 1}`} />
+        <img className="image-lightbox__img" src={images[index]} alt={`${title} screenshot ${index + 1}`} loading="lazy" />
         {count > 1 && (
           <div className="image-lightbox__controls">
             <button className="carousel__btn" onClick={goPrev} data-cursor="pointer" aria-label="Previous image">
@@ -186,6 +186,7 @@ function ImageCarousel({ images, title }) {
                   className={`carousel__image ${isActive ? 'carousel__image--active' : ''}`}
                   src={src}
                   alt={`${title} screenshot ${i + 1}`}
+                  loading="lazy"
                 />
                 {isActive && (
                   <span className="carousel__expand-icon">

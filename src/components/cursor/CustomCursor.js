@@ -66,28 +66,21 @@ export default function CustomCursor() {
   }, [isMobile, onHover, onLeave]);
 
   /* ── animate size / border on hover state change ── */
+  const tweenRef = useRef(null);
   useEffect(() => {
     if (isMobile) return;
     const el = cursorRef.current;
     if (!el) return;
 
-    if (isHovering) {
-      gsap.to(el, {
-        width: 50,
-        height: 50,
-        borderColor: accentColor,
-        duration: 0.3,
-        ease: 'power2.out',
-      });
-    } else {
-      gsap.to(el, {
-        width: 20,
-        height: 20,
-        borderColor: cursorBaseColor,
-        duration: 0.3,
-        ease: 'power2.out',
-      });
-    }
+    if (tweenRef.current) tweenRef.current.kill();
+
+    tweenRef.current = gsap.to(el, {
+      width: isHovering ? 50 : 20,
+      height: isHovering ? 50 : 20,
+      borderColor: isHovering ? accentColor : cursorBaseColor,
+      duration: 0.3,
+      ease: 'power2.out',
+    });
   }, [isHovering, isMobile, accentColor, cursorBaseColor]);
 
   if (isMobile) return null;
