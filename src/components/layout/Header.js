@@ -17,7 +17,7 @@ function Header() {
   const { mode } = useTheme(); // eslint-disable-line no-unused-vars
   const isMobile = useMediaQuery('(max-width: 700px)');
   const { data } = useContentful('siteSettings');
-  const cvUrl = data?.[0]?.fields?.resumeUrl?.fields?.file?.url || data?.[0]?.fields?.resumeUrl;
+  const cvUrl = data?.[0]?.fields?.resume?.fields?.file?.url || data?.[0]?.fields?.resume;
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
