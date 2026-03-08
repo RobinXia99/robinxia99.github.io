@@ -1,0 +1,15 @@
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  z-index: 9999;
+  border: 2px solid var(--cursor-base, #fff);
+  border-radius: 50%;
+  background: transparent;
+  /* centre the circle on the actual cursor position */
+  transform: translate(-50%, -50%);
+  will-change: transform, width, height, border-color;
+}

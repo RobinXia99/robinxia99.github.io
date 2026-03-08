@@ -1,24 +1,7 @@
 .App {
-  font-family: Arial;
   width: 100%;
-  box-sizing: border-box;
-  
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-
-
-html {
-  /* background-image: linear-gradient(to bottom right,#141414, #16161b, #101017); */
-  /* overflow-x: hidden; */
-  min-height: 100%;
-  /* background-color: #141414; */
-  
-  background: -webkit-linear-gradient(to left, #171717, #000000);
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #171717, #000000);
-  /* fallback for old browsers */
-
-
+  min-height: 100vh;
+  position: relative;
 }
 
 .webGL {
@@ -26,65 +9,24 @@ html {
   width: 100vw !important;
   height: 100vh !important;
   top: 0;
+  left: 0;
   outline: none;
   border: none;
   background-color: transparent;
   z-index: -1;
+  pointer-events: none;
 }
 
-.headline_divider {
-  height: 1px;
-  width: 100%;
-  background-color: var(--main_color_theme);
-  margin: 10px auto;
-
-}
-
-.reveal {
+main {
   position: relative;
-  opacity: 0;
-  transform: translateY(150px);
-  transition: all 1s ease;
-
+  z-index: 1;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: var(--content-padding);
 }
 
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0px);
-
-}
-
-
-@media screen and (max-width: 700px) {}
-
-/* Animations -------------- */
-
-@keyframes slideInFromRight {
-  0% {
-    transform: translateX(100%);
-  }
-
-  100% {
-    transform: translateX(0);
-  }
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes slideDownFromTop {
-  0% {
-    transform: translatey(-100%);
-  }
-
-  100% {
-    transform: translateY(0);
+@media screen and (max-width: 700px) {
+  main {
+    padding: 0 20px;
   }
 }

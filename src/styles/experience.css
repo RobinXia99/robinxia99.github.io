@@ -1,3 +1,4 @@
+/* ===== Portfolio v2 (legacy) ===== */
 .main_container.resume {
   flex-direction: column;
   padding: 50px 0;
@@ -126,5 +127,173 @@
   .experience_card:hover {
     background-color: #1d1d1d;
     opacity: 1;
+  }
+}
+
+/* ===== Portfolio v3 ===== */
+.experience-section {
+  padding: var(--section-padding);
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.experience-layout {
+  display: flex;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.experience-tabs {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 160px;
+  border-left: 2px solid var(--bg-secondary);
+}
+
+.experience-tab {
+  display: block;
+  width: 100%;
+  padding: 12px 20px;
+  background: none;
+  border: none;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-secondary);
+  text-align: left;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  white-space: nowrap;
+}
+
+.experience-tab:hover {
+  background: rgba(128, 128, 128, 0.05);
+  color: var(--accent);
+}
+
+.experience-tab--active {
+  color: var(--accent);
+  background: rgba(128, 128, 128, 0.08);
+  border-left: 2px solid var(--accent);
+  margin-left: -2px;
+}
+
+.experience-tab-indicator {
+  display: none;
+}
+
+.experience-details {
+  flex: 1;
+  min-height: 300px;
+}
+
+.experience-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.experience-logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.experience-role {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 4px;
+}
+
+.experience-company {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a.experience-company:hover {
+  text-decoration: underline;
+}
+
+.experience-duration {
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+.experience-description {
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.experience-description p {
+  margin: 0 0 12px;
+}
+
+.experience-dates {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.experience-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.experience-bullet {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 12px;
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.experience-bullet::before {
+  content: '\25B8';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 14px;
+}
+
+@media screen and (max-width: 700px) {
+  .experience-layout {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .experience-tabs {
+    flex-direction: row;
+    border-left: none;
+    border-bottom: 2px solid var(--bg-secondary);
+    overflow-x: auto;
+    min-width: unset;
+  }
+
+  .experience-tab {
+    padding: 10px 16px;
+    font-size: 12px;
+  }
+
+  .experience-tab-indicator {
+    top: auto;
+    bottom: -2px;
+    left: 0;
+    width: calc(100% / var(--tab-count, 3));
+    height: 2px;
+    transform: translateX(calc(var(--active-tab, 0) * 100%));
+  }
+
+  .experience-details {
+    min-height: 200px;
   }
 }

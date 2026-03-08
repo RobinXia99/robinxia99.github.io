@@ -1,73 +1,79 @@
-import "./App.css";
+import './App.css';
 
-import { Suspense, useRef, useState } from "react";
-import Header from "./components/header";
-import SideBars from "./components/sidebars";
-import { Canvas } from "@react-three/fiber";
-import ThreeContent from "./components/threecontent";
-import MainFlow from "./components/main_flow";
-import LoadingScreen from "./components/LoadingScreen";
+import { Suspense, useState, useCallback } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { ThemeProvider, useTheme } from './context/ThemeContext';
+import { CursorProvider } from './context/CursorContext';
+import { useScrollPosition } from './hooks/useScrollPosition';
+import { useMediaQuery } from './hooks/useMediaQuery';
 
-function App() {
-  let mediaQuery = window.matchMedia("(max-width: 700px)");
+import CustomCursor from './components/cursor/CustomCursor';
+import Header from './components/layout/Header';
+import SocialSidebar from './components/layout/SocialSidebar';
+import ColorPicker from './components/layout/ColorPicker';
+import Footer from './components/layout/Footer';
+import GridScene from './components/three/GridScene';
+import LoadingScreen from './components/LoadingScreen';
 
-  const aboutRef = useRef();
-  const experienceRef = useRef();
-  const projectsRef = useRef();
+import HeroSection from './components/sections/HeroSection';
+import AboutSection from './components/sections/AboutSection';
+import ExperienceSection from './components/sections/ExperienceSection';
+import ProjectsSection from './components/sections/ProjectsSection';
+import ContactSection from './components/sections/ContactSection';
 
-  const viewport = {
-    height: window.innerHeight,
-    width: window.innerWidth,
-  };
-
-  const [device, setDevice] = useState(() => {
-    if (mediaQuery.matches) {
-      return "mobile";
-    } else {
-      return "web";
-    }
-  });
-
-  mediaQuery.addEventListener("change", () => {
-    if (mediaQuery.matches) {
-      setDevice("mobile");
-    } else {
-      setDevice("web");
-    }
-  });
+function AppContent() {
+  const { accentColor, mode } = useTheme();
+  const { scrollProgress } = useScrollPosition();
+  const isMobile = useMediaQuery();
+  const [sceneReady, setSceneReady] = useState(false);
+  const onCreated = useCallback(() => setSceneReady(true), []);
 
   return (
     <div className="App">
-      <Header
-        device={device}
-        aboutRef={aboutRef}
-        experienceRef={experienceRef}
-        projectsRef={projectsRef}
-      />
-      <SideBars device={device} />
-      <MainFlow
-        viewport={viewport}
-        aboutRef={aboutRef}
-        experienceRef={experienceRef}
-        projectsRef={projectsRef}
-      />
+      <LoadingScreen sceneReady={sceneReady} />
+      <CustomCursor />
+      <Header />
+      {!isMobile && <SocialSidebar />}
+      {!isMobile && <ColorPicker />}
 
-      <LoadingScreen />
       <Canvas
         className="webGL"
         camera={{
-          position: [0, 0, 3],
-          fov: 50,
-          aspect: viewport.width / viewport.height,
+          position: [0, 0, 10],
+          fov: 40,
           near: 0.1,
-          far: 150,
+          far: 50,
         }}
+        onCreated={onCreated}
       >
         <Suspense fallback={null}>
-          <ThreeContent />
+          <GridScene
+            accentColor={accentColor}
+            mode={mode}
+          />
         </Suspense>
       </Canvas>
+
+      <main>
+        <HeroSection />
+        <AboutSection />
+        <ExperienceSection />
+        <ProjectsSection />
+        <ContactSection />
+      </main>
+
+      <Footer />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <ThemeProvider>
+      <CursorProvider>
+        <AppContent />
+      </CursorProvider>
+    </ThemeProvider>
   );
 }
 
