@@ -2,7 +2,7 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import { faExternalLinkAlt, faFolder, faChevronLeft, faChevronRight, faTimes, faExpand } from '@fortawesome/free-solid-svg-icons';
+import { faExternalLinkAlt, faFolder, faChevronLeft, faChevronRight, faTimes, faExpand, faImages } from '@fortawesome/free-solid-svg-icons';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS } from '@contentful/rich-text-types';
 
@@ -243,6 +243,9 @@ export default function ProjectCard({
   images,
   featured,
 }) {
+  const resolvedOtherImages = images?.map((img) => img?.fields?.file?.url || img).filter(Boolean) || [];
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+
   if (featured) {
     return (
       <div className="project-card project-card--featured">
@@ -299,49 +302,70 @@ export default function ProjectCard({
   }
 
   return (
-    <div className="project-card project-card--other">
-      <div className="project-card__other-header">
-        <FontAwesomeIcon icon={faFolder} className="project-card__folder-icon" />
-        <div className="project-card__links">
-          {repoUrl && (
-            <a
-              href={repoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="project-card__link"
-              aria-label="GitHub repository"
-              data-cursor="pointer"
-            >
-              <FontAwesomeIcon icon={faGithub} />
-            </a>
-          )}
-          {liveUrl && (
-            <a
-              href={liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="project-card__link"
-              aria-label="Live demo"
-              data-cursor="pointer"
-            >
-              <FontAwesomeIcon icon={faExternalLinkAlt} />
-            </a>
-          )}
+    <>
+      <div className="project-card project-card--other">
+        <div className="project-card__other-header">
+          <FontAwesomeIcon icon={faFolder} className="project-card__folder-icon" />
+          <div className="project-card__links">
+            {resolvedOtherImages.length > 0 && (
+              <button
+                className="project-card__link"
+                aria-label="View screenshots"
+                data-cursor="pointer"
+                onClick={() => setLightboxOpen(true)}
+              >
+                <FontAwesomeIcon icon={faImages} />
+              </button>
+            )}
+            {repoUrl && (
+              <a
+                href={repoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-card__link"
+                aria-label="GitHub repository"
+                data-cursor="pointer"
+              >
+                <FontAwesomeIcon icon={faGithub} />
+              </a>
+            )}
+            {liveUrl && (
+              <a
+                href={liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-card__link"
+                aria-label="Live demo"
+                data-cursor="pointer"
+              >
+                <FontAwesomeIcon icon={faExternalLinkAlt} />
+              </a>
+            )}
+          </div>
         </div>
+
+        <h3 className="project-card__title" data-cursor="pointer">
+          {title}
+        </h3>
+        <div className="project-card__other-description">{renderDescription(description)}</div>
+
+        <ul className="project-card__tech-list project-card__tech-list--bottom">
+          {technologies.map((tech) => (
+            <li key={tech} className="project-card__tech-tag">
+              {tech}
+            </li>
+          ))}
+        </ul>
       </div>
-
-      <h3 className="project-card__title" data-cursor="pointer">
-        {title}
-      </h3>
-      <div className="project-card__other-description">{renderDescription(description)}</div>
-
-      <ul className="project-card__tech-list project-card__tech-list--bottom">
-        {technologies.map((tech) => (
-          <li key={tech} className="project-card__tech-tag">
-            {tech}
-          </li>
-        ))}
-      </ul>
-    </div>
+      {lightboxOpen && createPortal(
+        <ImageLightbox
+          images={resolvedOtherImages}
+          title={title}
+          startIndex={0}
+          onClose={() => setLightboxOpen(false)}
+        />,
+        document.body
+      )}
+    </>
   );
 }

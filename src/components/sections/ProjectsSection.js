@@ -117,6 +117,7 @@ export default function ProjectsSection() {
                     technologies={f.tags || f.technologies || []}
                     repoUrl={f.githubUrl || f.repoUrl}
                     liveUrl={f.liveUrl}
+                    images={f.images}
                     featured={false}
                   />
                 );
