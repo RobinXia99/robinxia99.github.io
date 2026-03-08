@@ -1,6 +1,7 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS } from '@contentful/rich-text-types';
 import { useContentful } from '../../hooks/useContentful';
+import { optimizeImageUrl } from '../../lib/imageUrl';
 import SectionHeading from '../ui/SectionHeading';
 import AnimatedReveal from '../ui/AnimatedReveal';
 import '../../styles/about.css';
@@ -41,7 +42,7 @@ export default function AboutSection() {
 
   const bio = content?.description;
   const skills = content?.skills || fallbackSkills;
-  const photoUrl = content?.profileImage?.fields?.file?.url;
+  const photoUrl = optimizeImageUrl(content?.profileImage?.fields?.file?.url, { width: 560 });
 
   return (
     <section className="about-section" id="about-section">

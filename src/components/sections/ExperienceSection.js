@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS } from '@contentful/rich-text-types';
 import { useContentful } from '../../hooks/useContentful';
+import { optimizeImageUrl } from '../../lib/imageUrl';
 import SectionHeading from '../ui/SectionHeading';
 import AnimatedReveal from '../ui/AnimatedReveal';
 import '../../styles/experience.css';
@@ -125,8 +126,9 @@ export default function ExperienceSection() {
                   {current.logo?.fields?.file?.url && (
                     <img
                       className="experience-logo"
-                      src={current.logo.fields.file.url}
+                      src={optimizeImageUrl(current.logo.fields.file.url, { width: 96 })}
                       alt={`${current.company} logo`}
+                      loading="lazy"
                     />
                   )}
                   <div>

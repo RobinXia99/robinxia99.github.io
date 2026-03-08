@@ -5,6 +5,7 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faExternalLinkAlt, faFolder, faChevronLeft, faChevronRight, faTimes, faExpand, faImages } from '@fortawesome/free-solid-svg-icons';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS } from '@contentful/rich-text-types';
+import { optimizeImageUrl } from '../../lib/imageUrl';
 
 const richTextOptions = {
   renderNode: {
@@ -144,7 +145,7 @@ function ImageLightbox({ images, title, startIndex, onClose }) {
 function ImageCarousel({ images, title }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
-  const resolvedImages = images.map((img) => img?.fields?.file?.url || img);
+  const resolvedImages = images.map((img) => optimizeImageUrl(img?.fields?.file?.url || img));
   const count = resolvedImages.length;
 
   const goNext = (e) => {
@@ -244,7 +245,7 @@ export default function ProjectCard({
   images,
   featured,
 }) {
-  const resolvedOtherImages = images?.map((img) => img?.fields?.file?.url || img).filter(Boolean) || [];
+  const resolvedOtherImages = images?.map((img) => optimizeImageUrl(img?.fields?.file?.url || img)).filter(Boolean) || [];
   const [lightboxOpen, setLightboxOpen] = useState(false);
 
   if (featured) {
