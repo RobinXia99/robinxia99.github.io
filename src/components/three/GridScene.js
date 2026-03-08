@@ -48,7 +48,7 @@ function easeInOutCubic(t) {
 }
 
 /* ── Rolling Cube (scroll-driven) ── */
-function RollingCube({ id, startX, startZ, accentColor, mode, scrollThreshold, registry }) {
+function RollingCube({ startX, startZ, accentColor, mode, scrollThreshold }) {
   const groupRef = useRef();
   const isDark = mode === 'dark';
 
@@ -62,9 +62,6 @@ function RollingCube({ id, startX, startZ, accentColor, mode, scrollThreshold, r
     lastScroll: 0,
     scrollAccum: 0,
   });
-
-  // Register initial position
-  registry.set(id, { gx: startX, gz: startZ });
 
   const edges = useMemo(() => {
     return new THREE.EdgesGeometry(new THREE.BoxGeometry(CELL, CELL, CELL));
@@ -108,22 +105,13 @@ function RollingCube({ id, startX, startZ, accentColor, mode, scrollThreshold, r
         const MIN_Z = -4;
         const MAX_Z = 5;
 
-        // Check if another cube occupies a cell
-        const isOccupied = (x, z) => {
-          for (const [otherId, pos] of registry) {
-            if (otherId === id) continue;
-            if (pos.gx === x && pos.gz === z) return true;
-          }
-          return false;
-        };
-
-        // Try directions in random order until one is in bounds and unoccupied
+        // Pick a random valid direction
         const shuffled = [...DIRS].sort(() => Math.random() - 0.5);
         let picked = null;
         for (const dir of shuffled) {
           const nx = s.gx + dir.dx;
           const nz = s.gz + dir.dz;
-          if (nx >= MIN_X && nx <= MAX_X && nz >= MIN_Z && nz <= MAX_Z && !isOccupied(nx, nz)) {
+          if (nx >= MIN_X && nx <= MAX_X && nz >= MIN_Z && nz <= MAX_Z) {
             picked = dir;
             break;
           }
@@ -143,7 +131,7 @@ function RollingCube({ id, startX, startZ, accentColor, mode, scrollThreshold, r
     }
 
     // Animate roll smoothly
-    s.rollProgress += 0.025; // fixed speed per frame for smoothness
+    s.rollProgress += 0.05; // fixed speed per frame for smoothness
     const t = Math.min(s.rollProgress, 1);
     const eased = easeInOutCubic(t);
     const angle = eased * (Math.PI / 2);
@@ -192,8 +180,6 @@ function RollingCube({ id, startX, startZ, accentColor, mode, scrollThreshold, r
       s.rolling = false;
       s.rollProgress = 0;
 
-      // Update registry with new position
-      registry.set(id, { gx: s.gx, gz: s.gz });
     }
   });
 
@@ -260,19 +246,16 @@ function FloatingParticles({ count = 60, accentColor, mode }) {
   );
 }
 
-/* ── Shared cube position registry ── */
-const cubePositions = new Map();
-
 /* ── Main ── */
 export default function GridScene({ accentColor = '#4cc2d9', mode = 'dark' }) {
   return (
     <>
       <StaticGrid accentColor={accentColor} mode={mode} />
-      <RollingCube id="a" startX={-3} startZ={2} accentColor={accentColor} mode={mode} scrollThreshold={0.02} registry={cubePositions} />
-      <RollingCube id="b" startX={5} startZ={-4} accentColor={accentColor} mode={mode} scrollThreshold={0.03} registry={cubePositions} />
-      <RollingCube id="c" startX={0} startZ={-1} accentColor={accentColor} mode={mode} scrollThreshold={0.025} registry={cubePositions} />
-      <RollingCube id="d" startX={-5} startZ={-3} accentColor={accentColor} mode={mode} scrollThreshold={0.022} registry={cubePositions} />
-      <RollingCube id="e" startX={3} startZ={4} accentColor={accentColor} mode={mode} scrollThreshold={0.028} registry={cubePositions} />
+      <RollingCube startX={-3} startZ={2} accentColor={accentColor} mode={mode} scrollThreshold={0.008} />
+      <RollingCube startX={5} startZ={-4} accentColor={accentColor} mode={mode} scrollThreshold={0.012} />
+      <RollingCube startX={0} startZ={-1} accentColor={accentColor} mode={mode} scrollThreshold={0.01} />
+      <RollingCube startX={-5} startZ={-3} accentColor={accentColor} mode={mode} scrollThreshold={0.009} />
+      <RollingCube startX={3} startZ={4} accentColor={accentColor} mode={mode} scrollThreshold={0.011} />
       <FloatingParticles count={60} accentColor={accentColor} mode={mode} />
     </>
   );
